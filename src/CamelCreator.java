@@ -1,7 +1,7 @@
 
 public class CamelCreator {
 	
-	public  void main(String[] args) {
+	public static void main(String[] args) {
 		Camel fred = new Camel("brown",2);
 		fred.spit();
 		

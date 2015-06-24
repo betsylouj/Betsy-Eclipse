@@ -2,29 +2,22 @@
 // Copyright Wintriss Technical Schools 2013
 
 import java.applet.AudioClip;
-
 import java.awt.Dimension;
 
 
 import java.awt.Graphics;
-
 import java.awt.Robot;
-
 import java.awt.event.MouseEvent;
-
 import java.awt.event.MouseMotionListener;
-
 import java.awt.image.BufferedImage;
 
 
+
 import javax.imageio.ImageIO;
-
 import javax.swing.JApplet;
-
 import javax.swing.JFrame;
-
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 import javax.swing.SwingUtilities;
 
 
@@ -39,26 +32,26 @@ public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
 
     BufferedImage maze;
 
-    final int frameWidth = 600;
+    final int frameWidth = 800;
 
-    final int frameHeight = 400;
+    final int frameHeight = 600;
 
 
     ScaryMaze() throws Exception {
 
         //1. make a maze image and drop it into your default package http://pixlr.com/editor/
 
-        maze = ImageIO.read(getClass().getResource("maze.png"));
+        maze = ImageIO.read(getClass().getResource("WonderfulMaze.jpg"));
 
         //2. set the mouse pointer to the start of your maze using:
 
-// new Robot().mouseMove(xPosition, yPosition)
+  new Robot().mouseMove(75, 110);
 
         
 
         //3. add a mouse motion listener using:
 
-// addMouseMotionListener(this)
+addMouseMotionListener(this);
 
         
 
@@ -77,16 +70,19 @@ public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
 
         //4. print the mouseColor variable to see what color the mouse is touching
 
-
+System.out.println(mouseColor);
         //5. make a variable to hold the background color. 
-
+int backgroundColor = -1;
+int endColor = -2745215;
 
         //6. if the mouse falls off the path (if it is on the background)
 
-        
+        if (mouseColor == backgroundColor)
+        	scare();
 
                 // call the scare method
-
+if (mouseColor == endColor)
+	JOptionPane.showMessageDialog(null, "You WON!!!");
         
 
         //10. if the mouse is on the end color
@@ -104,14 +100,15 @@ public class ScaryMaze extends JPanel implements Runnable, MouseMotionListener {
 
         //7. find a scary sound and put it in the "default package" where you put your maze picture. here are a lot of scary sounds: http://bit.ly/scary-sounds
 
-        //AudioClip sound = JApplet.newAudioClip(getClass().getResource("scream.wav"));
+        AudioClip sound = JApplet.newAudioClip(getClass().getResource("Boo.wav"));
 
         //8. play the scary sound. Hint: type "sound" and then a period.        
 
-        
+     sound.play();
 
         //9. drop an image into your default package, and use the showScaryImage method to scare your victim!
-
+String imageName = "scary-picture.jpg";
+showScaryImage(imageName);
 
     }
 
