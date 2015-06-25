@@ -18,6 +18,7 @@ public class BodyPartQuiz {
 	// fill
 	// in their paths here. To get the path, right click on the image, and copy
 	// its Location.
+	//
 	String firstImage = "C:/Users/Win/Desktop/leblanc.jpg";
 
 	String secondImage = "C:/Users/Win/Desktop/good-wife.jpg";
