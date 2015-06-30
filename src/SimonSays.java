@@ -11,6 +11,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import java.io.IOException;
+
 
 public class SimonSays extends KeyAdapter {
 
@@ -28,7 +30,7 @@ public class SimonSays extends KeyAdapter {
         // 2. add 4 images which match keyboard keys like this: images.put(new Integer(KeyEvent.VK_UP), "image.jpg");
 
     	images.put(new Integer(KeyEvent.VK_UP), "upArrow.jpg");
-    	images.put(new Integer(KeyEvent.VK_DOWN), "downArrow.jpg");
+    	images.put(new Integer(KeyEvent.VK_DOWN), "downArrow.png");
     	images.put(new Integer(KeyEvent.VK_LEFT), "leftArrow.jpg");
     	images.put(new Integer(KeyEvent.VK_RIGHT), "rightArrow.jpg");
         // 3. call the method to show an image
@@ -87,6 +89,7 @@ showImage();
         
         // 8. add a key listener to the frame
       	simonFrame.addKeyListener(this);
+      	speak("press the Up key");
     }
 
 
@@ -108,11 +111,25 @@ showImage();
         return new JLabel(icon);
 
     }
+    static void speak(String words) {
+
+        try {
+
+            Runtime.getRuntime().exec("say " + words).waitFor();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
 
 
     public static void main(String[] args) throws Exception {
 
-        new SimonSays().makeAlbum();
+        JOptionPane.showMessageDialog(null, "Press the matching key when 'Simon says' otherwise press a different key");
+    	new SimonSays().makeAlbum();
 
     }
 
