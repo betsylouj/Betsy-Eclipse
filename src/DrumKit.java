@@ -56,7 +56,7 @@ public class DrumKit extends MouseAdapter
 		// 13. add a mouse listener to your drumImage.
 		drumLabelWithImage.addMouseListener(this);
 
-		drumString = "drum 3x.jpeg";
+		drumString = "drum 3.jpeg";
 		drumLabel2 = createLabelImage(drumString);
 		// 10. Add the image to the panel
 		drumPanel.add(drumLabel2);
