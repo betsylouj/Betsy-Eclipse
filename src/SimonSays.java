@@ -3,6 +3,7 @@ import java.awt.Component;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.net.URL;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -11,19 +12,21 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
 import java.io.IOException;
 
 
 public class SimonSays extends KeyAdapter {
-
+	//Need to put in correct speak method
+	
     // 1. Make a JFrame variable and initialize it using "new JFrame()"
 	JFrame simonFrame = new JFrame();
-
     HashMap<Integer,String> images = new HashMap<Integer, String>();
-
+    Date timeAtStart;
     private int imageIndex;
     private int tries = 0;
     private int score = 0;
+    private int doesSimonSay = 0;
 
     private  void makeAlbum() {
 
@@ -34,6 +37,7 @@ public class SimonSays extends KeyAdapter {
     	images.put(new Integer(KeyEvent.VK_LEFT), "leftArrow.jpg");
     	images.put(new Integer(KeyEvent.VK_RIGHT), "rightArrow.jpg");
         // 3. call the method to show an image
+    	timeAtStart = new Date();
     	showImage();
 
     }
@@ -49,15 +53,31 @@ public class SimonSays extends KeyAdapter {
         //12. if tries is greater than 9 (or however many you want)
 if (tries>9)
 {
-	JOptionPane.showMessageDialog(null, "You scored "+score+ " out of 10");
+	Date timeAtEnd = new Date();	
+	double totalTime = (timeAtEnd.getTime()-timeAtStart.getTime())/1000;
+	JOptionPane.showMessageDialog(null, "You scored "+score+ " out of "+ tries +"\nYou took "+totalTime+ " seconds");
 	System.exit(0);
 }
         //13.        exit the program
 
-if (keyCode == imageIndex)
-{
-	JOptionPane.showMessageDialog(null, "You got a point");
-	score = score + 1;
+if (keyCode == imageIndex){
+	if (doesSimonSay == 1) 		{
+		speak("Correct");
+		score = score + 1;
+		}
+	else 	{
+		speak("Simon didn't say so");
+		}
+	}
+else{
+	if (doesSimonSay == 1) 		{
+		speak("Incorrect");
+		score = score + 1;
+		}
+	else 	{
+		speak("Weird");
+		score = score + 1;
+		}
 }
         //14. if the keyCode matches the imageIndex
 
@@ -89,7 +109,12 @@ showImage();
         
         // 8. add a key listener to the frame
       	simonFrame.addKeyListener(this);
-      	speak("press the Up key");
+      	
+      	doesSimonSay = new Random().nextInt(2);
+      	if (doesSimonSay == 1)
+      	speak("Simon says press this key");
+      	else
+      		speak("Press this key");
     }
 
 
@@ -112,16 +137,8 @@ showImage();
 
     }
     static void speak(String words) {
-
-        try {
-
-            Runtime.getRuntime().exec("say " + words).waitFor();
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-
-        }
+//Need to put in correct speak method
+    	System.out.println(words);
 
     }
 

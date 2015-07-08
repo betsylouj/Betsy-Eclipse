@@ -15,11 +15,12 @@ public class ChuckleClicker implements ActionListener {
 	JButton ccButton1 = new JButton();
 	JButton ccButton2 = new JButton();
 	
-	ChuckleClicker()
-	{
+//	public static void main(String[] args) {
+//		ChuckleClicker cc = new ChuckleClicker();
+//		cc.makeButtons();
+//	}
 	
-	}
-	void makeButtons()
+	 void makeButtons()
 	{
 		JOptionPane.showMessageDialog(null, "makeButtons method");
 		
