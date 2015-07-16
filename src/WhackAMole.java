@@ -65,14 +65,18 @@ public class WhackAMole implements ActionListener {
 		}
 	}
 
-	private void speak(String string) {
-		System.out.println(string);
+	private void speak(String words) {
+		try {
+			Runtime.getRuntime().exec("say " + words).waitFor();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void endGame(Date timeAtStart, int molesWhacked) {
 		Date timeAtEnd = new Date();
 		JOptionPane.showMessageDialog(null,"Your whack rate is "
-					+ ((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.0 / molesWhacked)+ " moles per second.");
+					+ (molesWhacked/((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.0))+ " moles per second.");
 		molesWhacked += 10;
 		System.out.println(molesWhacked);
 	}
