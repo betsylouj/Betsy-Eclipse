@@ -1,52 +1,53 @@
-
 public class Movie implements Comparable<Movie> {
 
+	private String title;
 
-    private String title;
+	private int stars;
 
-    private int stars;
+	public Movie(String title, int stars) {
 
+		this.title = title;
 
-    public Movie(String title, int stars) {
+		this.stars = stars;
 
-        this.title = title;
+	}
 
-        this.stars = stars;
+	public String getTitle() {
 
-    }
+		return this.title;
 
+	}
 
-    public String getTitle() {
+	public int getRating() {
 
-        return this.title;
+		return this.stars;
 
-    }
+	}
 
+	public String getTicketPrice() {
+		if (this.stars > 2) {
+			return "That will be $12 please.";
+		} else if (this.title.contains("Twilight")) {
+			return "This movie is so bad, we'll pay YOU to watch it!";
+		} else {
+			return "Don't waste your money on this horrible rubbish.";
+		}
+	}
 
-    public int getRating() {
+	public String toString() {
 
-        return this.stars;
+		return "\"" + title + "\" - " + stars + " stars";
 
-    }
+	}
 
+	public int compareTo(Movie otherMovie) {
 
-    public String toString() {
+		int compareQuantity = otherMovie.getRating();
 
-        return "\"" + title + "\" - " + stars + " stars";
+		// return this.stars - compareQuantity; //ascending order
 
-    }
+		return compareQuantity - this.stars; // descending order
 
-
-    public int compareTo(Movie otherMovie) {
-
-        int compareQuantity = otherMovie.getRating();
-
-
-        //return this.stars - compareQuantity; //ascending order
-
-        return compareQuantity - this.stars; // descending order
-
-    }
+	}
 
 }
-

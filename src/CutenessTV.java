@@ -47,7 +47,7 @@ public class CutenessTV implements ActionListener {
 	}
 
 	void showDucks() {
-        playVideo("T0Rne4KbZSE");
+        playVideo("3RkFAN7PTG4");
     }
 
 	void showFrog() {

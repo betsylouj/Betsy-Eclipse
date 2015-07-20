@@ -21,7 +21,7 @@ public class CowTimer {
     }
 
    private int minutes;
-
+   
     public void setTime(int time1) {
         this.minutes = time1;
         System.out.println("Cow set to " + minutes + " minutes.");

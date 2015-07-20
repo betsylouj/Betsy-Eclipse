@@ -136,11 +136,13 @@ showImage();
         return new JLabel(icon);
 
     }
-    static void speak(String words) {
-//Need to put in correct speak method
-    	System.out.println(words);
-
-    }
+  void speak(String words) {
+      	 try {
+      		 Runtime.getRuntime().exec("say " + words).waitFor();
+      	 } catch (Exception e) {
+      		 e.printStackTrace();
+      	 }
+       }
 
 
     public static void main(String[] args) throws Exception {
