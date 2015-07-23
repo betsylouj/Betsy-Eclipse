@@ -46,7 +46,7 @@ public class SimonSaysTest extends KeyAdapter {
 	public void keyPressed(KeyEvent e) {
 
 		int keyCode = e.getKeyCode();
-		// 16. make a points variable to track the score. tell the user their
+		// 16. make a variable to track the score. tell the user their
 		// score at the end.
 
 		// 17. if the keyCode matches the imageIndex and "Simon says..."
@@ -132,8 +132,12 @@ public class SimonSaysTest extends KeyAdapter {
 		Icon icon = new ImageIcon(imageURL);
 		return new JLabel(icon);
 	}
+	
+	void speak(String words){
+		System.out.println(words);
+	}
 
-	void speak(String words) {
+	void speak1(String words) {
 		try {
 			Runtime.getRuntime().exec("say " + words).waitFor();
 		} catch (Exception e) {
