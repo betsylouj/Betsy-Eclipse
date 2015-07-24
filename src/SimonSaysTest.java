@@ -132,12 +132,8 @@ public class SimonSaysTest extends KeyAdapter {
 		Icon icon = new ImageIcon(imageURL);
 		return new JLabel(icon);
 	}
-	
-	void speak(String words){
-		System.out.println(words);
-	}
 
-	void speak1(String words) {
+	void speak(String words) {
 		try {
 			Runtime.getRuntime().exec("say " + words).waitFor();
 		} catch (Exception e) {
