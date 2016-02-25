@@ -18,6 +18,7 @@ public class BinaryConverter implements ActionListener {
 	public static void main(String[] args) {
 		BinaryConverter bc = new BinaryConverter();
 		bc.makePanel();
+		//
 	}
 
 	void makePanel() {
