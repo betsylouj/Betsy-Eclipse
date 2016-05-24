@@ -17,13 +17,13 @@ public class LandOfTurtles {
 		int width = panel.getWidth();
 		int height = panel.getHeight();
 		System.out.println(width + " , " + height);
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 10; i++) {
 		Turtle t = new Turtle();
 		int x = new Random().nextInt(width);
 		int y = new Random().nextInt(height);
 		System.out.println(x + " , " + y);
 		t.setX(x);
-		//t.setY(y);
+		t.setY(y);
 		panel.addTurtle(t);
 
 		/* 4. Put 50 Turtles on the beach. */

@@ -20,7 +20,7 @@ public class PhotoQuiz
 
 		// 1. find an image on the internet, and put its URL in a String
 		// variable (from your browser, right click on the image, and select
-		// “Copy Image URL”)
+		
 		String imageString = "http://www.freefoto.com/images/904/13/904_13_1998---Northumberland-Countryside_web.jpg";
 		// 2. create a variable of type "Component" that will hold your image
 		Component image;

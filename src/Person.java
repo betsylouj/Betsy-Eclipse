@@ -16,4 +16,7 @@ public class Person {
 	String getName(){
 		return this.name;
 	}
+/*	public String toString(){
+		return (this.name + " has mad "+superpower+ " skills");
+	}*/
 }

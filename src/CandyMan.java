@@ -37,6 +37,7 @@ public class CandyMan implements ActionListener {
 		cmButton.addActionListener(this);
 		cm.setVisible(true);
 		cm.setLocationRelativeTo(null);
+		cm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		cm.pack();
 	}
 
@@ -45,8 +46,8 @@ public class CandyMan implements ActionListener {
 		counter ++;	
 		System.out.println(counter);
 		if (counter>=5){
-			showPictureFromTheInternet("http://www.funnyhub.com/wp-content/uploads/2014/12/Scary-faces.jpg");
-			playSound(0);
+			showPictureFromTheInternet("http://cdn2-b.examiner.com/sites/default/files/styles/image_content_width/hash/3a/ab/3aab0200f05dd5d8a659ad63210c8cd8.jpeg?itok=rRwOluF_");
+			//playSound(0);
 		}
 	}
 	

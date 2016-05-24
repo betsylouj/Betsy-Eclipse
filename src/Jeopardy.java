@@ -32,9 +32,10 @@ public class Jeopardy implements ActionListener {
 
 	private JButton secondButton;
 
-	private JButton thirdButton, fourthButton;
+	private JButton thirdButton, fourthButton, fifthButton;
 
 	private JPanel quizPanel;
+	JPanel header;
 
 	int score = 0;
 
@@ -49,51 +50,48 @@ public class Jeopardy implements ActionListener {
 	}
 
 	private void start() {
-
 		JFrame frame = new JFrame();
-
 		quizPanel = new JPanel();
-
 		frame.setLayout(new BorderLayout());
-
 		// 1. Make the frame show up
 		frame.setVisible(true);
-
 		// 2. Give your frame a title
 		frame.setTitle("Betsy's Amazing Quiz");
-
 		// 3. Create a JPanel variable to hold the header using the createHeader
 		// method
-		JPanel header =	createHeader("Science");
-
+		header = createHeader("Science");
 		// 4. Add the header component to the quizPanel
 		quizPanel.add(header);
-
 		// 5. Add the quizPanel to the frame
 		frame.add(quizPanel);
-
 		// 6. Use the firstButton variable to hold a button using the
 		// createButton method
-		JButton firstButton = createButton("$200");
-
+		firstButton = createButton("$200");
 		// 7. Add the firstButton to the quizPanel
 		quizPanel.add(firstButton);
-
 		// 8. Write the code inside the createButton() method below. Check that
 		// your game looks like Figure 1 in the Jeopardy Handout -
 		// http://bit.ly/1bvnvd4.
 
 		// 9. Use the secondButton variable to hold a button using the
 		// createButton method
-		JButton secondButton = createButton("$400");
+		secondButton = createButton("$400");
 		quizPanel.add(secondButton);
+		thirdButton = createButton("$600");
+		quizPanel.add(thirdButton);
+		fourthButton = createButton("$800");
+		quizPanel.add(fourthButton);
+		fifthButton = createButton("$1000");
+		quizPanel.add(fifthButton);
 
 		// 10. Add the secondButton to the quizPanel
 
 		// 11. Add an action listeners to the buttons (2 lines of code)
 		firstButton.addActionListener(this);
 		secondButton.addActionListener(this);
-		
+		thirdButton.addActionListener(this);
+		fourthButton.addActionListener(this);
+		fifthButton.addActionListener(this);
 
 		// 12. Fill in the actionPerformed() method below
 
@@ -112,13 +110,11 @@ public class Jeopardy implements ActionListener {
 
 	/*
 	 * 
-	 * 13. Add buttons so that you have $200, $400, $600, $800 and $1000
-	 * questions
+	 * 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
 	 * 
 	 * 
 	 * 
-	 * [optional] Use the showImage or playSound methods when the user answers a
-	 * question
+	 * [optional] Use the showImage or playSound methods when the user answers a question
 	 * 
 	 * [optional] Add new topics for the quiz
 	 */
@@ -144,24 +140,36 @@ public class Jeopardy implements ActionListener {
 
 		// Remove this temporary message:
 
-		//JOptionPane.showMessageDialog(null, "pressed " + ((JButton) arg0.getSource()).getText()
-		//						+ " button");
+		// JOptionPane.showMessageDialog(null, "pressed " + ((JButton) arg0.getSource()).getText()
+		// + " button");
 
 		// Use the method that plays the jeopardy theme music.
 		System.out.println("playing music");
-		//playJeopardyTheme();
+		// playJeopardyTheme();
 
 		JButton buttonPressed = (JButton) arg0.getSource();
-System.out.println(buttonPressed);
-System.out.println(firstButton);
+		System.out.println(buttonPressed);
+		System.out.println(firstButton);
 		// If the buttonPressed was the firstButton
-//if (buttonPressed == firstButton)
-//{
-	JOptionPane.showMessageDialog(null, "asking question");
 
-	askQuestion("What is the main artery from the heart?", "Aorta", 200);
-//}
-
+		if (buttonPressed == firstButton) {
+			askQuestion("What is the main artery from the heart?", "Aorta", 200);
+			firstButton.setText(null);
+		} else if (buttonPressed == secondButton) {
+			askQuestion("What is the chemical symbol for potassium", "K", 400);
+			secondButton.setText(null);
+		} else if (buttonPressed == thirdButton) {
+			askQuestion("What causes object to resist movement", "Inertia", 600);
+			thirdButton.setText(null);
+		} else if (buttonPressed == fourthButton) {
+			askQuestion("What is the chemical formula for phenol", "C6H6", 800);
+			fourthButton.setText(null);
+		} else if (buttonPressed == fifthButton) {
+			askQuestion(
+					"What is the structure inside a cell that releases energy",
+					"Mitochondria", 1000);
+			fifthButton.setText(null);
+		}
 		// Call the askQuestion() method
 
 		// Fill in the askQuestion() method. When you play the game, the score
@@ -180,23 +188,20 @@ System.out.println(firstButton);
 
 		// Remove this temporary message
 
-		JOptionPane.showMessageDialog(null,
-				"this is where the question will be asked");
+		//JOptionPane.showMessageDialog(null, "this is where the question will be asked");
 
 		// Use a pop up to ask the user the question
 		String answer = JOptionPane.showInputDialog(question);
-if (answer .equals(correctAnswer))
-{
-	score = score + prizeMoney;
-	updateScore();
-	JOptionPane.showMessageDialog(null, "Correct");
-}
-else
-{
-	JOptionPane.showMessageDialog(null, "Incorrect - the answer is '" + correctAnswer +"'");
-	score = score - prizeMoney;
-	updateScore();
-}
+		if (answer.equals(correctAnswer)) {
+			score = score + prizeMoney;
+			updateScore();
+			JOptionPane.showMessageDialog(null, "Correct");
+		} else {
+			JOptionPane.showMessageDialog(null, "Incorrect - the answer is '"
+					+ correctAnswer + "'");
+			score = score - prizeMoney;
+			updateScore();
+		}
 		// If the answer is correct
 
 		// Increase the score by the prizeMoney
