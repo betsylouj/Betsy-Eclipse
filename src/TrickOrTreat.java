@@ -1,6 +1,8 @@
 import java.applet.AudioClip;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -13,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class TrickOrTreat implements ActionListener {
+public class TrickOrTreat implements ActionListener, MouseMotionListener {
 	JFrame tot ;
 	JPanel totPanel;
 	
@@ -26,6 +28,7 @@ public class TrickOrTreat implements ActionListener {
 
 	private void start() {
 		tot = new JFrame();
+		tot.addMouseMotionListener(this);
 		totPanel = new JPanel();		
 		totButton1 = new JButton("Trick");
 		totButton2 = new JButton("Treat");
@@ -66,6 +69,7 @@ private void showPictureFromTheInternet(String imageUrl) {
             JFrame frame = new JFrame();
             frame.add(imageLabel);
             frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.pack();
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -75,5 +79,17 @@ private void playSound(String fileName) {
 	System.out.println("Sound");
 	AudioClip sound = JApplet.newAudioClip(getClass().getResource(fileName));
 	sound.play();
+}
+
+@Override
+public void mouseDragged(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mouseMoved(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
 }
 }

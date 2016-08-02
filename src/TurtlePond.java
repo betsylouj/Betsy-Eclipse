@@ -6,8 +6,10 @@ import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Date;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 import org.teachingextensions.logo.Paintable;
 import org.teachingextensions.logo.PenColors;
 import org.teachingextensions.logo.Tortoise;
@@ -29,7 +31,7 @@ public class TurtlePond implements KeyEventDispatcher {
 						"Move the turtle with the arrow keys to find the hidden cookie.\nYou'll get warmer the closer you get.\n\nHurry or she'll die of hunger!");
 
 		// 4. For debugging purposes, show the cookie. The user won’t see this.
-		showCookie();
+		// showCookie();
 	}
 
 	private void goUp() {
@@ -63,6 +65,7 @@ public class TurtlePond implements KeyEventDispatcher {
 		if (Math.abs(tortoiseLocationX - cookieX) < 5
 				&& Math.abs(tortoiseLocationY - cookieY) < 5) {
 			JOptionPane.showMessageDialog(null, "You found the Cookie");
+			System.exit(0);
 		} else if (Math.abs(tortoiseLocationX - cookieX) < 20
 				&& Math.abs(tortoiseLocationY - cookieY) < 20) {
 			setBackgroundColor(Color.RED);
@@ -74,6 +77,8 @@ public class TurtlePond implements KeyEventDispatcher {
 		} else if (Math.abs(tortoiseLocationX - cookieX) < 100
 				&& Math.abs(tortoiseLocationY - cookieY) < 100) {
 			setBackgroundColor(Color.YELLOW);
+		} else {
+			setBackgroundColor(Color.GRAY);
 		}
 		// 8. If the Tortoise is within 50 pixels of the food, set the background color to orange
 
@@ -82,7 +87,15 @@ public class TurtlePond implements KeyEventDispatcher {
 		// 10. If the Tortoise is within 5 pixels of the cookie, make a pop-up to tell them they found it
 
 		// 11. If more than 20 seconds have elapsed, tell them the turtle died of hunger!
-
+		if (getTimeElapsed() > 20) {
+			JOptionPane.showMessageDialog(null, "The tortoise died of hunger");
+			System.exit(0);
+		}
+		if (wasHereBefore(tortoiseLocationX, tortoiseLocationY)) {
+			JOptionPane.showMessageDialog(null,
+					"You crossed your own path and died!!!");
+			System.exit(0);
+		}
 		// 12. If the Tortoise crosses it's own path, tell them they failed and move them back to the beginning
 
 	}
